@@ -1,8 +1,11 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,twoside,a4paper]{article}
 
 
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{RR}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -10,45 +13,85 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%\RRNo{}
 
-\begin{document}
+\RRetitle{A critical analysis of Contiki's network stack
+          for integrating new MAC protocols}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%                               80 COLONNES                                %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlehead{A critical analysis of Contiki's network stack\ldots}
 
-\title{A critical analysis of Contiki's network stack
-       for integrating new MAC protocols}
-
-\author{
-K\'evin Roussel and Ye-Qiong Song\\
-Universit\'e de Lorraine~/ LORIA~/ INRIA Nancy Grand-Est,\\
-615, rue du Jardin Botanique,\\
-54600 Villers-l\`es-Nancy, France\\
-Email: \texttt{\{Kevin.Roussel,Ye-Qiong.Song,Olivier.Zendra\}@inria.fr}
+\RRauthor{
+K\'evin Roussel
+\and
+Ye-Qiong Song
 }
 
-\date{2013}
+\RRequipe{Madynes}
 
-\maketitle
+\RRtitle{Analyse critique de la pile réseau de Contiki
+         pour l'intégration de nouveaux protocoles MAC}
 
-
-\begin{abstract}
+\RRabstract{
 Recent Wireless Sensor Network (WSN) MAC protocols focus on both very low
 idle traffic duty-cycle and high throughput when bursts of traffic occur.
+
 It is highly desirable to be able to integrate them into a common and open
 platform, not only for easing their performance comparison, but also
 for their effective interaction with existing higher-layer protocols.
+
 As part of our work on WSN, we have implemented a new Media Access Control
 (MAC) protocol into the Contiki OS. When doing so, we stumbled into various
 limitations and quirks, relative to this system---and especially
-its network stack. The present article summarizes the critical issues
-we have faced, and gives some ideas to fix them or work around them.
-Considering the widespread Contiki stack, we believe that those issues
-are helpful for other researchers and developers.
-\end{abstract}
+its network stack.
+
+The present report summarizes the critical issues we have faced, and
+gives some ideas to fix them or work around them. Considering the
+widespread use of Contiki and its netstack, we believe that knowing
+those issues will be helpful for other researchers and developers.
+}
+
+\RRkeyword{WSN, MAC protocols, Contiki OS, network stack}
+
+\RRresume{
+Les protocoles MAC récents pour réseaux de capteurs sans-fil (WSN) sont
+conçus pour assurer à la fois une activité radio (``duty cycle'') minimale
+durant les périodes d'inactivité sur le médium radio, et un débit maximal
+quand des pointes de trafic réseau ont lieu.
+
+Il est hautement préférable d'intégrer ces protocoles dans une plate-forme
+commune et ouverte, non seulement pour faciliter la comparaison de leurs
+performances, mais l'efficacité de leur interaction avec les protocoles
+existants dand les couches supérieures de la pile réseau.
+
+Durant nos travaux sur les WSN, nous avons implémenté un nouveau protocole
+MAC (Media Access Control) au sein de Contiki OS. Ce faisant, nous avons
+fait face à diverses limitations et difficultés techniques propres à ce
+système~--- et notamment à sa pile réseau.
+
+Le présent rapport résumé les problèmes critiques auxquels nous avons fait
+face, et donne quelques idées pour les régler ou les contourner. Eu égard
+à l'usage généralisé qui est fait de Contiki et de sa pile réseau, nous
+pensons que de telles informations seront utiles aux autres chercheurs
+et développeurs.
+}
+
+\RRmotcle{réseaux de capteurs sans-fil, protocoles MAC,
+          Contiki OS, pile réseau}
+
+\RRdate{December 2013}
+
+\RCNancy
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                               80 COLONNES                                %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
 
 \newcommand{\term}[1]{\textbf{#1}}
+
+\makeRR
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -246,10 +289,6 @@ code using Contiki OS, there is no such examples of code working at the
 system-level (i.e.: designed to plug into Contiki's internals). This kind
 of development is thus even more difficult to apprehend and learn.
 
-The authors of the present article hope to submit, as a contribution,
-technical documentation and tutorial(s) to the Contiki project as part
-of their future research work.
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Limitations}
@@ -269,8 +308,8 @@ choices made for the Contiki netstack.
 
 \subsubsection{Missing features: incomplete radio drivers}
 
-As of the current version (release 2.7), the drivers API for the radio
-transceivers only provides the most basic features: sending and receiving
+As of the current version (release 2.7), the API for the radio transceivers
+drivers only provides the most basic features: sending and receiving
 a packet, turning transceiver on and off, and checking for channel
 availability (CCA). Access to all other features of transceivers (e.g.:
 frequency/channel switching, transmission power setting, changing node
@@ -377,7 +416,7 @@ levels involved (from bottom to top):
 \begin{enumerate}
 \item RADIO: the ``physical'' driver controlling the radio transceiver;
 \item FRAMER: the parser/generator of formatted packets (e.g.:
-              ``framer\_802154'' for the 802.15.4 protocol);
+              ``\texttt{framer\_ 802154}'' for the 802.15.4 protocol);
 \item RDC: the Radio Duty-Cycle controller (see above);
 \item MAC: the Media Acess Control protocol implementation;
 \item NETWORK: the network-level protocol implementation (e.g. 6LoWPAN).
@@ -439,7 +478,7 @@ has still much to offer.
 The authors would like to thank the \emph{Living Assistant Robot}
 and the \emph{ANR Quasimodo} (ANR grant \#~2010 INTB 0206 01) projects,
 for providing fundings to the research work corresponding
-to the present article.
+to the present paper.
 
 
 
