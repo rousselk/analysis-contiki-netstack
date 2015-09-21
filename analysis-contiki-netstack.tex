@@ -102,16 +102,18 @@ Wireless Sensor Networks (WSNs) currently form a very active topic of
 research. One aspect of this topic is the fast-paced development of
 WSN-oriented operating systems.
 Two projects clearly stand out in that domain: \term{TinyOS} \cite{tiny-os},
-and \term{Contiki} \cite{contiki} \cite{contiki-web-site}.
-Both are open-source projects, providing free\footnotemark{}
-systems to the WSN-(and more generally embedded devices)-oriented community
-of scientists and developers. We chose the latter as our software platform,
-since it is written in standard C language (whereas TinyOS uses a specific
-derivative named ``nesC''), and seems to be---as of now---more actively
-used and supported by both scientific and industrial communities.
+and \term{Contiki} \cite{contiki}. Both are open-source projects, providing
+free\footnotemark[1] systems to the WSN---and more generally embedded
+devices---oriented community of scientists and developers. We chose the
+latter as our software platform, since it is written in standard C language
+(whereas TinyOS uses a specific derivative named ``nesC''), and seems to
+be---as of now---more actively used and supported by both scientific
+and industrial communities.
 
-\footnotetext{Here, the term ``free'' is used as a synonym of liberty
-              (of use and diffusion), as in the ``free speech'' expression.}
+\footnotetext[1]{Here, the term ``free'' is used as a synonym of liberty (of
+                 use and diffusion), as in the ``free speech'' expression.}
+
+\medskip
 
 Another important aspect of WSN research is the optimization of
 \term{Quality-of-Service (QoS)} and \term{energy consumption} directly into
@@ -124,6 +126,8 @@ dynamic runtime adaptation to the network traffic load, better QoS, and
 minimized energy consumption (by allowing radio transceivers to be turned
 off as much as possible); most of these alternatives are adaptive
 duty-cycled protocols.
+
+\medskip
 
 Adaptive duty-cycled protocols can be classified into many families:
 some of the best-known protocols, like S-MAC \cite{s-mac} and
@@ -157,11 +161,16 @@ Strawman protocol \cite{strawman-mac}.
 \label{cosens-principle}
 \end{figure}
 
-Our team, Madynes at INRIA, is also active in this domain: we have already
-presented many high performance traffic-adaptive MAC protocols for WSNs;
-among these stand the \term{CoSens} \cite{cosens} protocol which has been
-implemented on Jennic motes, and iQueue-MAC \cite{iqueue-mac} which has
-been implemented on STM32W108 chips.
+\newpage
+
+Our team, Madynes\footnotemark[2] at INRIA, is also active in this domain:
+we have already presented many high performance traffic-adaptive MAC
+protocols for WSNs; among these stand the \term{CoSens} \cite{cosens}
+protocol which has been implemented on Jennic motes, and iQueue-MAC
+\cite{iqueue-mac} which has been implemented on STM32W108 chips.
+
+\footnotetext[2]{{MADYNES team: MAnaging DYnamic NEtworks and Services},
+\texttt{http://madynes.loria.fr/}}
 
 Although an actual implementation becomes nowadays almost a must step
 to validate any new WSN MAC protocols, their specific implementation
@@ -275,7 +284,7 @@ Such absence makes the initial approach to Contiki for new developers
 difficult, by further heightening an already high learning barrier.
 
 The main source of documentation, when it comes to Contiki development,
-is the ``contiki-developers'' mailing list \cite{contiki-dev-ml}: any person
+is the ``contiki-developers'' mailing list\footnotemark[3]: any person
 wishing to do development on this platform (be it at the applicative or at
 the system level) just won't be able to achieve any real goal without
 subscribing to it, and requesting informations and help from its members.
@@ -283,6 +292,12 @@ While this list provides a rich source of knowledge, is reactive, and
 friendly welcomes newcomers, it can hardly be considered as a satisfactory
 replacement for the missing technical and introductory documentation
 mentioned above.
+
+\footnotetext[3]{Contiki-developers mailing list:\\
+address: \texttt{contiki-developers@lists.sourceforge.net}\\
+management URL:
+\texttt{https://lists.sourceforge.net/lists/listinfo/contiki-developers}
+}
 
 Let's also add that, if there are many examples provided of application-level
 code using Contiki OS, there is no such examples of code working at the
